@@ -33,7 +33,7 @@ jobs:
         mkdir -p pack/pkg/Script/${{ env.FOLDER_NAME }}
         mkdir -p pack/pkg/Language
         cp *.anm2 pack/pkg/Script/${{ env.FOLDER_NAME }}
-        cp Language/*.aul2 pack/pkg/Language
+        cp Languages/*.aul2 pack/pkg/Language
         cd pack/pkg
         zip -r ../zip/${{ env.REPOSITORY_NAME }}.au2pkg.zip *
         cd ../..
