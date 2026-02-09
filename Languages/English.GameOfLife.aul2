@@ -1,0 +1,27 @@
+################################################################
+# Target: GameOfLife (https://github.com/sigma-axis/aviutl2_script_GameOfLife)
+# Target Version: v1.00 (for beta32)
+# Language: English
+# Translator(s):
+#   sigma-axis (https://github.com/sigma-axis)
+
+[GameOfLife]
+世代数=Generation
+初代基準=Init Criteria
+不透明ピクセル=Alpha
+暗い色=Darker
+明るい色=Lighter
+しきい値=Threshold
+色=Color
+キャッシュ=Cache Settings
+キャッシュ有効=Enable Cache
+キャッシュ削除=Clear Cache
+その他=Others
+画像ループ=Wrap Image
+なし=None
+横方向=Horizontally
+縦方向=Vertically
+両方向=Both
+最大追加サイズ=Max Extension Size
+最大ステップ数=Max Steps
+初代はそのまま表示=Ignore 0th Gen
