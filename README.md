@@ -171,7 +171,7 @@ Although, usage documentations for this script in languages other than Japanese 
 
 ## 改版履歴
 
-- **v1.00 (for beta32)** (2026-02-??)
+- **v1.00 (for beta32)** (2026-02-09)
 
   - 初版．
 
