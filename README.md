@@ -2,9 +2,9 @@
 
 与えられた画像を初期配置として[ライフゲーム](https://ja.wikipedia.org/wiki/ライフゲーム)をするフィルタ効果です．
 
-[ダウンロードはこちら．](https://github.com/sigma-axis/aviutl2_script_GameOfLife/releases)
+[ダウンロードはこちら．](https://github.com/sigma-axis/aviutl2_script_GameOfLife/releases) [紹介動画](https://www.nicovideo.jp/watch/sm45928264)
 
-TODO: image (webp)
+![Game of Life playing ping-pong with four gliders](https://github.com/user-attachments/assets/dd957b8a-5154-423e-9660-43104bbabb0e)
 
 ##  動作要件
 
@@ -171,7 +171,7 @@ Although, usage documentations for this script in languages other than Japanese 
 
 ## 改版履歴
 
-- **v1.00 (for beta13)** (2026-02-??)
+- **v1.00 (for beta32)** (2026-02-??)
 
   - 初版．
 
