@@ -29,6 +29,7 @@ jobs:
 
     - name: Pack and compress
       run: |
+        mkdir pack
         mkdir pack/zip
         mkdir pack/pkg/Script/${{ env.FOLDER_NAME }}
         mkdir pack/pkg/Language
