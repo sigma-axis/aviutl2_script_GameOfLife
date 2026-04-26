@@ -6,6 +6,12 @@
 
 ![Game of Life playing ping-pong with four gliders](https://github.com/user-attachments/assets/dd957b8a-5154-423e-9660-43104bbabb0e)
 
+##  お願い
+
+このスクリプトを使った動画などでは，ニコニコの親作品にこのスクリプトの紹介動画を登録してくれると嬉しいです．任意ではありますが，登録してくれたほうが励みになります．
+
+- 登録 ID: `sm45928264`
+
 ##  動作要件
 
 - AviUtl ExEdit2
