@@ -1,7 +1,9 @@
+-- under development for v1.01 (for beta43a) r1
 --information:Conway's Game of Life Script v1.00 (for beta32) by σ軸
 --label:加工
 --filter
---track@generation:世代数,0,8192,0,1
+--require:2003801
+--track@generation:世代数,0,65536,0,1,,0.125
 --select@channel:初代基準=0,不透明ピクセル=0,暗い色=1,明るい色=2
 --track@threshold:しきい値,0,100,50,0.01
 --color@color:色,ffffff
@@ -69,20 +71,24 @@ float4 next_gen(float4 pos : SV_Position) : SV_Target
 --[[pixelshader@find_bound:
 Texture2D src : register(t0);
 cbuffer constant0 : register(b0) {
-	float2 size;
+	float2 size_f;
 };
+static const int2 size = int2(size_f);
+static const int stride = (size.x + size.y + 1) >> 1;
+
 float4 find_bound(float4 pos : SV_Position) : SV_Target
 {
 	bool is_zero = true;
-	[branch] if (pos.x < size.x) {
-		const uint h = uint(size.y), x = uint(pos.x);
-		for (uint y = 0; y < h; y++)
-			is_zero = is_zero && src[uint2(x, y)].a <= 0;
+	const int i = int(pos.x) + stride * int(pos.y);
+	[branch] if (i < size.x) {
+		const int x = i;
+		for (int y = 0; y < size.y; y++)
+			is_zero = is_zero && src.Load(int3(x, y, 0)).a <= 0;
 	}
 	else {
-		const uint w = uint(size.x), y = uint(pos.x) - w;
-		for (uint x = 0; x < w; x++)
-			is_zero = is_zero && src[uint2(x, y)].a <= 0;
+		const int y = i - size.x;
+		for (int x = 0; x < size.x; x++)
+			is_zero = is_zero && src.Load(int3(x, y, 0)).a <= 0;
 	}
 	return float4(0, 0, 0, is_zero ? 0 : 1);
 }
@@ -149,6 +155,9 @@ local ext_l, ext_r, ext_u, ext_d = 0, 0, 0, 0;
 local expand_x, expand_y = expand, expand;
 if wrap % 2 == 1 then expand_x = 0 end
 if wrap >= 2 then expand_y = 0 end
+local image_max = 2 ^ 14; -- obj.getinfo("image_max")
+expand_x = math.min(expand_x, math.floor((image_max - obj.w) / 2));
+expand_y = math.min(expand_y, math.floor((image_max - obj.h) / 2));
 
 -- restore from cache.
 local tbl_cache, mode = nil, nil;
@@ -253,7 +262,9 @@ end
 if ext_l > 0 or ext_r > 0 or ext_u > 0 or ext_d > 0 then
 	local w, h = obj.w, obj.h;
 
-	obj.clearbuffer("tempbuffer", w + h, 1);
+	obj.clearbuffer("tempbuffer",
+		w + h > image_max and math.ceil((w + h) / 2) or w + h,
+		w + h > image_max and 2 or 1);
 	obj.pixelshader("find_bound", "tempbuffer", "object", { w, h });
 	local data = obj.getpixeldata("tempbuffer");
 	local ffi = require("ffi");
