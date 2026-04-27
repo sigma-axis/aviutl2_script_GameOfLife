@@ -6,7 +6,6 @@ on:
 
 env:
   REPOSITORY_NAME: GameOfLife
-  FOLDER_NAME: sigma-axis
 
   TIME_ZONE: Asia/Tokyo
   # Time zone for the timestamp when releasing.
@@ -27,20 +26,23 @@ jobs:
       with:
         submodules: recursive
 
+    - name: Set package version
+      run: |
+        cd assets
+        sed -i 's/\${ver}/${{ github.ref_name }}/g' package.ini
+
     - name: Pack and compress
       run: |
-        mkdir -p pack/zip
-        mkdir -p pack/pkg/Script/${{ env.FOLDER_NAME }}
-        mkdir -p pack/pkg/Language
-        cp *.anm2 pack/pkg/Script/${{ env.FOLDER_NAME }}
-        cp Languages/*.aul2 pack/pkg/Language
-        cd pack/pkg
-        zip -r ../zip/${{ env.REPOSITORY_NAME }}.au2pkg.zip *
-        cd ../..
-        cp *.md pack/zip
-        cp LICENSE pack/zip/LICENSE
-        cd pack/zip
-        zip -r ../../aviutl2_script_${{ env.REPOSITORY_NAME }}-${{ github.ref_name }}.zip *
+        mkdir -p pack/Script/${{ env.REPOSITORY_NAME }}
+        mkdir -p pack/Language
+        cp *.anm2 pack/Script
+        cp Languages/*.aul2 pack/Language
+        cp *.md pack/Script/${{ env.REPOSITORY_NAME }}
+        cp LICENSE pack/Script/${{ env.REPOSITORY_NAME }}/LICENSE
+        cp assets/package.txt pack
+        cp assets/package.ini pack
+        cd pack
+        zip -r ../aviutl2_script_${{ env.REPOSITORY_NAME }}-${{ github.ref_name }}.au2pkg.zip *
       # rename .zip file for downloading if necessary.
 
     - name: Prepare release notes
@@ -62,7 +64,7 @@ jobs:
         done
 
     - name: Release
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
         name: ${{ steps.release-notes.outputs.name }}
         files: '*.zip'

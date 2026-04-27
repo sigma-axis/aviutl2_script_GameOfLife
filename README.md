@@ -18,11 +18,11 @@
 
   http://spring-fragrance.mints.ne.jp/aviutl
 
-  - `beta32` で動作確認済み．
+  - `beta43a` で動作確認済み．
 
-## 導入方法
+##  導入方法
 
-`GameOfLife.au2pkg.zip` を AviUtl2 のプレビューウィンドウにドラッグ&ドロップしてください．
+ダウンロードした `aviutl2_script_GameOfLife-v*.**.au2pkg.zip` を AviUtl2 のウィンドウにドラッグ & ドロップしてください．
 
 初期状態だと「フィルタ効果を追加」メニューの「加工」に追加されています．
 - 「オブジェクト追加メニューの設定」の「ラベル」項目で分類を変更できます．
@@ -50,10 +50,10 @@ Although, usage documentations for this script in languages other than Japanese 
 
 初期配置から経過させる世代数を指定します．ただし[キャッシュ](#キャッシュ有効)がない場合，[「最大ステップ数」](#最大ステップ数)を超えた指定ができません．
 
-最小値は 0, 最大値は 8192, 初期値は 0.
+最小値は 0, 最大値は 65536, 初期値は 0.
 
 > [!TIP]
-> 最大値の 8192 を超えた値を指定したい場合，[「等速移動(秒)@Basic_S」「等速移動(フレーム)@Basic_S」](https://github.com/sigma-axis/aviutl2_script_Basic_S/wiki/等速移動)など利用すると上限を無視できます．
+> 最大値の 65536 を超えた値を指定したい場合，[「等速移動(秒)@Basic_S」「等速移動(フレーム)@Basic_S」](https://github.com/sigma-axis/aviutl2_script_Basic_S/wiki/等速移動)など利用すると上限を無視できます．
 
 ### 初代基準
 
@@ -175,7 +175,17 @@ Although, usage documentations for this script in languages other than Japanese 
 "なし", "横方向", "縦方向", "両方向"
 ```
 
-## 改版履歴
+##  次の改版予定
+
+- **v1.01 (for beta43a)** (2026-??-??)
+
+  - 極端に大きなサイズに対しても適切に対応できるように．
+  - 配布形式の変更．以前は2重の `.zip` ファイルだったのを1重に．
+    - 更新する際は，一度以前のパッケージのアンインストールをしてから，更新版をインストールしてください．
+
+  - `beta43a` での動作確認．
+
+##  改版履歴
 
 - **v1.00 (for beta32)** (2026-02-09)
 

@@ -1,0 +1,17 @@
+# Conway's Game of Life in AviUtl ExEdit2
+
+コンウェイのライフゲームをシミュレーションするスクリプトです．
+
+公開ページ:
+https://github.com/sigma-axis/aviutl2_script_Path_S
+
+コンウェイのライフゲームの説明:
+https://ja.wikipedia.org/wiki/ライフゲーム
+
+紹介動画:
+https://www.nicovideo.jp/watch/sm45928264
+
+お願い:
+ニコニコ動画での親作品登録をしていただけると励みになります．
+作品 ID: sm45928264
+
