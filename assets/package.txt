@@ -3,7 +3,7 @@
 コンウェイのライフゲームをシミュレーションするスクリプトです．
 
 公開ページ:
-https://github.com/sigma-axis/aviutl2_script_Path_S
+https://github.com/sigma-axis/aviutl2_script_GameOfLife
 
 コンウェイのライフゲームの説明:
 https://ja.wikipedia.org/wiki/ライフゲーム
