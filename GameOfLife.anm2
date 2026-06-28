@@ -1,7 +1,7 @@
---information:Conway's Game of Life Script v1.01 (for beta43a) by σ軸
+--information:Conway's Game of Life Script v1.02-dev (for beta52) by σ軸
 --label:加工
 --filter
---require:2003801
+--require:2005000
 --track@generation:世代数,0,65536,0,1,,0.125
 --select@channel:初代基準=0,不透明ピクセル=0,暗い色=1,明るい色=2
 --track@threshold:しきい値,0,100,50,0.01
@@ -13,7 +13,7 @@
 --select@wrap:画像ループ=0,なし=0,横方向=1,縦方向=2,両方向=3
 --track@expand:最大追加サイズ,0,2000,0,1
 --value@max_steps:最大ステップ数,1024
---check@ignore_gen0:初代はそのまま表示,false
+--checksection@ignore_gen0:初代はそのまま表示,false,false
 --value@PI:PI,{}
 --[[pixelshader@from_luma:
 Texture2D src : register(t0);
@@ -226,8 +226,14 @@ if ext_l > expand_x or ext_r > expand_x or ext_u > expand_y or ext_d > expand_y 
 	local l, r, u, d =
 		math.max(ext_l - expand_x, 0), math.max(ext_r - expand_x, 0),
 		math.max(ext_u - expand_y, 0), math.max(ext_d - expand_y, 0);
-	obj.effect("クリッピング", "左", l, "右", r, "上", u, "下", d);
 	ext_l, ext_r, ext_u, ext_d = ext_l - l, ext_r - r, ext_u - u, ext_d - d;
+	while l > 0 or r > 0 or u > 0 or d > 0 do
+		local l1, r1, u1, d1 =
+			math.min(l, 4000), math.min(r, 4000),
+			math.min(u, 4000), math.min(d, 4000);
+		l, r, u, d = l - l1, r - r1, u - u1, d - d1;
+		obj.effect("クリッピング", "左", l1, "右", r1, "上", u1, "下", d1);
+	end
 end
 if steps > 0 and (expand_x > ext_l or expand_x > ext_r or expand_y > ext_u or expand_y > ext_d) then
 	local l, r, u, d =
@@ -235,9 +241,15 @@ if steps > 0 and (expand_x > ext_l or expand_x > ext_r or expand_y > ext_u or ex
 		math.min(steps, math.max(expand_x - ext_r, 0)),
 		math.min(steps, math.max(expand_y - ext_u, 0)),
 		math.min(steps, math.max(expand_y - ext_d, 0));
-	obj.effect("領域拡張", "左", l, "右", r, "上", u, "下", d);
 	obj.cx, obj.cy = obj.cx + (l - r) / 2, obj.cy + (u - d) / 2;
 	ext_l, ext_r, ext_u, ext_d = ext_l + l, ext_r + r, ext_u + u, ext_d + d;
+	while l > 0 or r > 0 or u > 0 or d > 0 do
+		local l1, r1, u1, d1 =
+			math.min(l, 4000), math.min(r, 4000),
+			math.min(u, 4000), math.min(d, 4000);
+		l, r, u, d = l - l1, r - r1, u - u1, d - d1;
+		obj.effect("領域拡張", "左", l1, "右", r1, "上", u1, "下", d1);
+	end
 end
 
 -- apply steps.
@@ -289,9 +301,13 @@ if ext_l > 0 or ext_r > 0 or ext_u > 0 or ext_d > 0 then
 	end
 
 	-- apply clipping.
-	if l > 0 or r > 0 or u > 0 or d > 0 then
-		obj.effect("クリッピング", "左", l, "右", r, "上", u, "下", d);
-		ext_l, ext_r, ext_u, ext_d = ext_l - l, ext_r - r, ext_u - u, ext_d - d;
+	ext_l, ext_r, ext_u, ext_d = ext_l - l, ext_r - r, ext_u - u, ext_d - d;
+	while l > 0 or r > 0 or u > 0 or d > 0 do
+		local l1, r1, u1, d1 =
+			math.min(l, 4000), math.min(r, 4000),
+			math.min(u, 4000), math.min(d, 4000);
+		l, r, u, d = l - l1, r - r1, u - u1, d - d1;
+		obj.effect("クリッピング", "左", l1, "右", r1, "上", u1, "下", d1);
 	end
 end
 

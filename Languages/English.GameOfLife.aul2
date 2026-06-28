@@ -1,9 +1,9 @@
-################################################################
-# Target: GameOfLife (https://github.com/sigma-axis/aviutl2_script_GameOfLife)
-# Target Version: v1.00 (for beta32)
-# Language: English
-# Translator(s):
-#   sigma-axis (https://github.com/sigma-axis)
+;===============================================================
+; Target: GameOfLife (https://github.com/sigma-axis/aviutl2_script_GameOfLife)
+; Target Version: v1.00 (for beta32)
+; Language: English
+; Translator(s):
+;   sigma-axis (https://github.com/sigma-axis)
 
 [GameOfLife]
 世代数=Generation

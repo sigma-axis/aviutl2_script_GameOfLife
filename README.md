@@ -18,7 +18,7 @@
 
   http://spring-fragrance.mints.ne.jp/aviutl
 
-  - `beta43a` で動作確認済み．
+  - `beta52` で動作確認済み．
 
 ##  導入方法
 
@@ -174,6 +174,16 @@ Although, usage documentations for this script in languages other than Japanese 
 ```lua
 "なし", "横方向", "縦方向", "両方向"
 ```
+
+##  次の改版予定
+
+- **v1.02 (for beta52)** (2026-??-??)
+
+  - D&D でインストール時のメッセージの誤字修正．
+  - 「初代はそのまま表示」のチェックボックスを中間点毎に可変なものに置き換え．
+  - コード整理．
+
+  - `beta52` での動作確認．
 
 ##  改版履歴
 
