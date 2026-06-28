@@ -175,17 +175,15 @@ Although, usage documentations for this script in languages other than Japanese 
 "なし", "横方向", "縦方向", "両方向"
 ```
 
-##  次の改版予定
+##  改版履歴
 
-- **v1.02 (for beta52)** (2026-??-??)
+- **v1.02 (for beta52)** (2026-06-29)
 
   - D&D でインストール時のメッセージの誤字修正．
   - 「初代はそのまま表示」のチェックボックスを中間点毎に可変なものに置き換え．
   - コード整理．
 
   - `beta52` での動作確認．
-
-##  改版履歴
 
 - **v1.01 (for beta43a)** (2026-04-28)
 
